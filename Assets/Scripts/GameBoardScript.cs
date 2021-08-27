@@ -17,7 +17,7 @@ public class GameBoardScript : MonoBehaviour
     public GameObject Token7;
     public GameObject Token8;
     public GameObject Token9;
-    private GameObject[,] boards;
+    public GameObject[,] boards;
 
     // FLAGS
     private int currentTurn = -1;
@@ -81,17 +81,19 @@ public class GameBoardScript : MonoBehaviour
                     stat = "Player O WIN";
                 }
                 WhoWinsText.GetComponent<Text>().text = stat;
-                WhoWinsText.gameObject.SetActive(true);
             }
-        }
-
-        if (currentTurn % 2 == 0)
-        {
-            WhoToMovesText.GetComponent<Text>().text = "O to move";
+            WhoWinsText.gameObject.SetActive(true);
         }
         else
         {
-            WhoToMovesText.GetComponent<Text>().text = "X to move";
+            if (currentTurn % 2 == 0)
+            {
+                WhoToMovesText.GetComponent<Text>().text = "O to move";
+            }
+            else
+            {
+                WhoToMovesText.GetComponent<Text>().text = "X to move";
+            }
         }
     }
 
@@ -198,6 +200,7 @@ public class GameBoardScript : MonoBehaviour
             { Token4, Token5, Token6 },
             { Token7, Token8, Token9 }
         };
+        
     }
 
     // Start is called before the first frame update
